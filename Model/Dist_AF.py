@@ -18,6 +18,7 @@ class Dist_AF_IPA(nn.Module):
         output_bb, translation, outputs = self.structure_module(single_repr, embedding, f=aatype, mask=batch_gt_frames['seq_mask'])
         pred_frames = torch.stack(output_bb)
         lddt = self.plddt(outputs['single'])
+        print(lddt)
         experimentally_resolved_logits = self.experimentally_resolved(outputs['single'])
         return translation, outputs, pred_frames
 
